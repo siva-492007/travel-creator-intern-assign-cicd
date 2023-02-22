@@ -1,2 +1,9 @@
 version: 0.0
 os: linux
+
+hooks:
+  BeforeInstall:
+    - location: Scripts/ecrLogin.sh
+  AfterInstall:
+    - location: Scripts/runDockerContainer.sh
+
