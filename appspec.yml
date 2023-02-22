@@ -3,11 +3,11 @@ os: linux
 
 hooks:
   BeforeInstall:
-    - location: Scripts/ecrLogin.sh
+    - location: Scripts/ecrLogin
   AfterInstall:
-    - location: Scripts/runDockerContainer.sh
+    - location: Scripts/runDockerContainer
   ApplicationStop:
-    - location: Scripts/stopServer.sh
+    - location: Scripts/stopServer
 
 
 # wget https://aws-codedeploy-us-west-1.s3.us-west-1.amazonaws.com/latest/install
