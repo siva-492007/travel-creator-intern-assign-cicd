@@ -6,4 +6,8 @@ hooks:
     - location: Scripts/ecrLogin.sh
   AfterInstall:
     - location: Scripts/runDockerContainer.sh
+  ApplicationStop:
+    - location: Scripts/stopServer.sh
 
+
+# wget https://aws-codedeploy-us-west-1.s3.us-west-1.amazonaws.com/latest/install
