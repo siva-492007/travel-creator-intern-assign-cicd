@@ -1,6 +1,14 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+   
+    commands:
+        # install npm
+        - npm install
+
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -8,12 +16,17 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      # build reactjs app
+      - echo Building Reactjs Application...
+      - npm run-script build
+      # docker build & tag
       - echo Building the Docker image...  
       - docker build -t reactapp-repo .
       - docker tag reactapp-repo:latest 925220130031.dkr.ecr.us-west-1.amazonaws.com/reactapp-repo:latest
   post_build:
     commands:
       - echo Build completed on `date`
+      # docker push to ECR repo
       - echo Pushing the Docker image...
       - docker push 925220130031.dkr.ecr.us-west-1.amazonaws.com/reactapp-repo:latest
 
