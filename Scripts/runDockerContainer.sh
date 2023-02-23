@@ -10,11 +10,10 @@ docker tag 925220130031.dkr.ecr.us-west-1.amazonaws.com/reactapp-repo:latest rea
 
 
 # stop the running old container
-ID=$(docker ps -q --filter ancestor=react-app)
+ID=$(docker ps -q)
 if [ "ID" ]; then
         echo "Stopping old container..." 
-        docker stop $ID
-        docker rm $ID
+        docker ps -aq | xargs docker stop | xargs docker rm
 fi
 
 # run the container from new image pulled from ECR
